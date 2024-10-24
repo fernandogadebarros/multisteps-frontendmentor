@@ -3,10 +3,8 @@ import * as Input from '@/components/Form/Input'
 import { usePresentationInfo } from '@/presentations/personal-info.presentation'
 
 export const PersonalInfo = () => {
-  const { info, inputs, register, handleSubmit, errors, formSubmit } =
+  const { inputs, register, handleSubmit, errors, formSubmit } =
     usePresentationInfo()
-
-  console.log(info)
 
   return (
     <form
