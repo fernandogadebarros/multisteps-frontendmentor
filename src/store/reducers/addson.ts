@@ -6,7 +6,7 @@ const initialState = [
     title: 'Online service',
     subtitle: 'Access to multiplayer games',
     prices: ['+$1/mo', '+$10/yr'],
-    isChecked: false,
+    isChecked: true,
   },
   {
     id: 2,

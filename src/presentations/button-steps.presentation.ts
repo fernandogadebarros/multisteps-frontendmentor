@@ -1,15 +1,22 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { nextStep, prevStep } from '@/store/reducers/steps'
+import { AddOnsProps } from '@/components/Views/Screens/PickAddOns/types'
 
 export const useStep = () => {
   const dispatch = useDispatch()
-  const steps = useSelector((state: { steps: number }) => state.steps)
+  const storage = useSelector(
+    (state: { steps: number; addson: AddOnsProps[] }) => ({
+      steps: state.steps,
+      addson: state.addson,
+    }),
+  )
+  const isNotAddonActive = storage.addson.every((addon) => !addon.isChecked)
 
   const step = {
-    greaterThanOne: steps > 1,
-    first: steps === 1,
-    fourth: steps === 4,
-    last: steps >= 5,
+    greaterThanOne: storage.steps > 1,
+    first: storage.steps === 1,
+    fourth: storage.steps === 4,
+    last: storage.steps >= 5,
   }
 
   const goBack = () => {
@@ -19,10 +26,10 @@ export const useStep = () => {
   }
 
   const goNext = () => {
-    if (steps > 1) {
+    if (storage.steps > 1) {
       dispatch(nextStep())
     }
   }
 
-  return { steps, step, goBack, goNext }
+  return { step, isNotAddonActive, goBack, goNext }
 }

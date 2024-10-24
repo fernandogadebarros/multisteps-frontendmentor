@@ -6,7 +6,7 @@ import { PrevButton } from './PrevButton'
 import { StepsButtonsProps } from './types'
 
 export const ButtonSteps = ({ desktop, className }: StepsButtonsProps) => {
-  const { step, goBack, goNext } = useStep()
+  const { step, isNotAddonActive, goBack, goNext } = useStep()
 
   return (
     !step.last && (
@@ -22,7 +22,7 @@ export const ButtonSteps = ({ desktop, className }: StepsButtonsProps) => {
         )}
       >
         <PrevButton step={step} goBack={goBack} />
-        <NextButton step={step} goNext={goNext} />
+        <NextButton step={step} {...(!isNotAddonActive && { goNext })} />
       </div>
     )
   )

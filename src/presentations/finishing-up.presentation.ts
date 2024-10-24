@@ -18,9 +18,12 @@ export const useFinishingUp = () => {
   const planChoosenByUser = packages.items.filter((item) => item.isActive)
   const addOnSelected = packages.addson.filter((item) => item.isChecked)
   const planType = packages.planType
-  const textPlan = planType.charAt(0).toUpperCase() + planType.slice(1)
   const isMonthly = planType === 'monthly'
-  const switchPlan = planType === 'monthly' ? 'yearly' : 'monthly'
+  const plan = {
+    switch: isMonthly ? 'yearly' : 'monthly',
+    per: isMonthly ? 'month' : 'year',
+    text: planType.charAt(0).toUpperCase() + planType.slice(1),
+  }
 
   const planPriceText = isMonthly
     ? planChoosenByUser[0]?.prices?.[0]
@@ -46,8 +49,7 @@ export const useFinishingUp = () => {
   return {
     planChoosenByUser,
     addOnSelected,
-    textPlan,
-    switchPlan,
+    plan,
     totalPrice,
     currencyUnit,
     isMonthly,

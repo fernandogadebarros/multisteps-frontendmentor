@@ -4,8 +4,7 @@ export const FinishingUp = () => {
   const {
     planChoosenByUser,
     addOnSelected,
-    textPlan,
-    switchPlan,
+    plan,
     totalPrice,
     currencyUnit,
     isMonthly,
@@ -18,11 +17,11 @@ export const FinishingUp = () => {
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
             <span className="font-ubuntu-bold text-sm text-blue-marine lg:text-base">
-              {planChoosenByUser[0]?.text} ({textPlan})
+              {planChoosenByUser[0]?.text} ({plan.text})
             </span>
             <span
               className="cursor-pointer text-sm underline duration-200 hover:text-purple"
-              onClick={() => handlePlanTypeChange(switchPlan)}
+              onClick={() => handlePlanTypeChange(plan.switch)}
             >
               Change
             </span>
@@ -46,7 +45,7 @@ export const FinishingUp = () => {
         </div>
       </div>
       <div className="mt-6 flex items-center justify-between px-6 text-neutral-dark">
-        <span className="text-sm">Total (per month)</span>
+        <span className="text-sm">Total (per {plan.per})</span>
         <span className="font-ubuntu-bold text-base text-purple lg:text-xl">
           +${totalPrice}
           {currencyUnit}
