@@ -11,6 +11,6 @@ export const NextButton = ({ step, goNext }: NextButtonProps) => (
     className={cn(step.fourth && 'bg-purple hover:bg-[#928CFF]')}
     onClick={() => step.greaterThanOne && goNext?.()}
   >
-    Next Step
+    {step.fourth ? 'Confirm' : 'Next Step'}
   </Button>
 )

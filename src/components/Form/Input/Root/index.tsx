@@ -6,7 +6,7 @@ export const Root = ({ errors, type, ...props }: RootProps) => {
     <div
       {...props}
       className={twMerge(
-        'flex w-full items-center gap-2 rounded-lg border border-neutral-light px-4 py-3 shadow-sm outline-none',
+        'flex w-full items-center gap-2 rounded-lg border border-neutral-light px-4 py-3 shadow-sm outline-none duration-200 hover:border-purple',
         errors?.[type] && 'border-red-straw',
         errors?.[type]
           ? 'focus-within:border-red-straw'
